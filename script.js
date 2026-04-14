@@ -22,6 +22,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       pet_info['weight'] = pet_info['weight'] + 5;
       checkAndUpdatePetInfoInHtml();
       $('.pet-message').hide().html("Yum! That was delicious!").slideDown(500);
+      var sound = new Audio("sounds/nom-nom-nom_gPJiWn4.mp3");
+      sound.play();
        //I added .html() and .slideDown() to the end of each function so that a message will appear when you click each button.
        // .html() - sets the HTML content of the pet-message element
        // .slideDown() - animates the element sliding into view
@@ -32,6 +34,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       pet_info['weight'] = pet_info['weight'] - 2;
       checkAndUpdatePetInfoInHtml();
       $('.pet-message').hide().html("Yay! That was so much fun!").slideDown(500);
+      var sound = new Audio("sounds/squeak_Q72c7Tg.mp3");
+      sound.play();
     }
     
     function clickedExerciseButton() {
@@ -39,6 +43,8 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       pet_info['weight'] = pet_info['weight'] - 10;
       checkAndUpdatePetInfoInHtml();
       $('.pet-message').hide().html("Phew! That was exhausting!").slideDown(500);
+      var sound = new Audio("sounds/whistle_BBvcaZ1.mp3");
+      sound.play();
     }
 
     function clickedSleepButton(){
@@ -46,6 +52,13 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
       pet_info['weight'] = pet_info['weight'] + 1;
       checkAndUpdatePetInfoInHtml();
       $('.pet-message').hide().html("Zzz... That was a nice nap!").slideDown(500);
+      var randomNum = Math.random();
+      if (randomNum < 0.5) {
+      var sound = new Audio("sounds/sleeping_HwTkaox.mp3");
+      } else {
+      var sound = new Audio("sounds/ronquidos-y-silbidos.mp3");
+      }
+      sound.play();
     }
   
     function checkAndUpdatePetInfoInHtml() {
