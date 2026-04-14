@@ -7,31 +7,45 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     $('.treat-button').click(clickedTreatButton);
     $('.play-button').click(clickedPlayButton);
     $('.exercise-button').click(clickedExerciseButton);
-  
+    $('.sleep-button').click(clickedSleepButton);
+    
 
   
-    
+  
   })
   
     // Add a variable "pet_info" equal to a object with the name (string), weight (number), and happiness (number) of your pet
-    var pet_info = {name:"My Pet Name", weight:"??", happiness:"??"};
+    var pet_info = {name:"Dax", weight:10, happiness:50};
   
     function clickedTreatButton() {
-      // Increase pet happiness
-      // Increase pet weight
+      pet_info['happiness'] = pet_info['happiness'] + 10;
+      pet_info['weight'] = pet_info['weight'] + 5;
       checkAndUpdatePetInfoInHtml();
+      $('.pet-message').hide().html("Yum! That was delicious!").slideDown(500);
+       //I added .html() and .slideDown() to the end of each function so that a message will appear when you click each button.
+       // .html() - sets the HTML content of the pet-message element
+       // .slideDown() - animates the element sliding into view
     }
     
     function clickedPlayButton() {
-      // Increase pet happiness
-      // Decrease pet weight
+      pet_info['happiness'] = pet_info['happiness'] + 15;
+      pet_info['weight'] = pet_info['weight'] - 2;
       checkAndUpdatePetInfoInHtml();
+      $('.pet-message').hide().html("Yay! That was so much fun!").slideDown(500);
     }
     
     function clickedExerciseButton() {
-      // Decrease pet happiness
-      // Decrease pet weight
+      pet_info['happiness'] = pet_info['happiness'] - 5;
+      pet_info['weight'] = pet_info['weight'] - 10;
       checkAndUpdatePetInfoInHtml();
+      $('.pet-message').hide().html("Phew! That was exhausting!").slideDown(500);
+    }
+
+    function clickedSleepButton(){
+      pet_info['happiness'] = pet_info['happiness'] + 5;
+      pet_info['weight'] = pet_info['weight'] + 1;
+      checkAndUpdatePetInfoInHtml();
+      $('.pet-message').hide().html("Zzz... That was a nice nap!").slideDown(500);
     }
   
     function checkAndUpdatePetInfoInHtml() {
@@ -40,7 +54,12 @@ $(function() { // Makes sure that your function is called once all the DOM eleme
     }
     
     function checkWeightAndHappinessBeforeUpdating() {
-      // Add conditional so if weight is lower than zero.
+     if (pet_info['weight'] < 0) {
+    pet_info['weight'] = 0
+    }
+    if (pet_info['happiness'] < 0) {
+    pet_info['happiness'] = 0
+    }
     }
     
     // Updates your HTML with the current values in your pet_info object
